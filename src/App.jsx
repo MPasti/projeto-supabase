@@ -1,5 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
+import { Button } from "rsuite";
+import "rsuite/dist/rsuite.min.css";
+
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
+
+import { useContext } from "react";
+import { AppContext } from "./context/AppContext";
+import AppModal from "./AppModal";
+import AppForm from "./AppForm";
 
 const supabase = createClient(
   "https://fdtnfwnyiknfkxwvcfbq.supabase.co",
@@ -7,8 +17,8 @@ const supabase = createClient(
 );
 
 function App() {
-  const [usuarios, setUsuarios] = useState([]);
-  const [refresh, setRefresh] = useState(false);
+  const { usuarios, setUsuarios, refresh, setRefresh } = useContext(AppContext);
+
   //state para ao dar o insert, mudar o estado e usar o useEffect toda vez que der refresh e mudar o nome
 
   //função de get
@@ -49,7 +59,7 @@ function App() {
     const { error } = await supabase
       .from("cadastro_usuarios")
       .delete()
-      .eq("id", 2);
+      .eq("id", 5);
     if (error) {
       console.log(error.message);
     }
@@ -59,20 +69,44 @@ function App() {
   useEffect(() => {
     getUsuarios();
     setRefresh(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refresh]);
 
   console.log(usuarios);
   return (
-    <>
-      <ul>
-        {usuarios.map((usuario) => (
-          <li key={usuario.id}>{usuario.nome}</li>
-        ))}
-      </ul>
-      <button onClick={updateUsuarios}>update</button>
-      <button onClick={insertUsuarios}>insert</button>
-      <button onClick={deleteUsuarios}>delete</button>
-    </>
+    <div className="container">
+      <Outlet></Outlet>
+      <Navbar></Navbar>
+
+      <AppModal></AppModal>
+      <div style={{ margin: "25px" }}>
+        <AppForm></AppForm>
+      </div>
+
+      <div className="button-container" style={{ marginTop: "15px" }}>
+        <Button
+          appearance="primary"
+          style={{ marginRight: "10px" }}
+          onClick={updateUsuarios}
+        >
+          update
+        </Button>
+        <Button
+          appearance="primary"
+          style={{ marginRight: "10px" }}
+          onClick={insertUsuarios}
+        >
+          insert
+        </Button>
+        <Button
+          appearance="primary"
+          style={{ marginRight: "10px" }}
+          onClick={deleteUsuarios}
+        >
+          delete
+        </Button>
+      </div>
+    </div>
   );
 }
 
