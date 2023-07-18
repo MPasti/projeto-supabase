@@ -21,8 +21,8 @@ const headerStyles = {
   padding: 18,
   fontSize: 16,
   height: 56,
-  background: "#34c3ff",
-  color: " #fff",
+  background: "#ff4a50",
+  color: " #fff]",
   whiteSpace: "nowrap",
   overflow: "hidden",
 };
