@@ -14,7 +14,8 @@ const supabase = createClient(
 );
 
 function AppConection() {
-  const { usuarios, setUsuarios, refresh, setRefresh } = useContext(AppContext);
+  const { usuarios, setUsuarios, refresh, setRefresh, formValue } =
+    useContext(AppContext);
 
   //state para ao dar o insert, mudar o estado e usar o useEffect toda vez que der refresh e mudar o nome
 
@@ -37,8 +38,8 @@ function AppConection() {
 
   async function insertUsuarios() {
     const { error } = await supabase.from("cadastro_usuarios").insert({
-      nome: "Robertinho",
-      email: "roberto@gmail.com",
+      nome: formValue.name,
+      email: formValue.email,
       cpf: 11122233340,
       endereco: "Rua Whatsapp",
       bairro: "Vila da folha",

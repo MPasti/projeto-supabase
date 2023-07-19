@@ -16,14 +16,17 @@ import GroupIcon from "@rsuite/icons/legacy/Group";
 import MagicIcon from "@rsuite/icons/legacy/Magic";
 import AppConection from "./AppConection";
 import ExitIcon from "@rsuite/icons/Exit";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaHospital } from "react-icons/fa";
 
 const headerStyles = {
-  padding: 18,
-  fontSize: 16,
-  height: 56,
+  display: "block",
+  padding: 15,
+  fontWeight: "bold",
+  fontSize: 18,
+  height: 65,
   background: "#ff4a50",
-  color: " #fff]",
+  color: " #fff",
   whiteSpace: "nowrap",
   overflow: "hidden",
 };
@@ -57,6 +60,7 @@ const NavToggle = ({ expand, onChange }) => {
 };
 
 const AppContainer = () => {
+  const navigate = useNavigate();
   const [expand, setExpand] = React.useState(true);
   return (
     <div className="show-fake-browser sidebar-page">
@@ -68,7 +72,19 @@ const AppContainer = () => {
         >
           <Sidenav.Header>
             <div style={headerStyles}>
-              <span style={{ marginLeft: 12 }}> Cadastros</span>
+              <FaHospital
+                style={{
+                  fontSize: "1.5em",
+                }}
+              />
+              <span
+                style={{
+                  marginLeft: "15px",
+                  fontSize: "22px",
+                }}
+              >
+                Hospital
+              </span>
             </div>
           </Sidenav.Header>
           <Sidenav
@@ -78,35 +94,44 @@ const AppContainer = () => {
           >
             <Sidenav.Body>
               <Nav>
-                <Nav.Item eventKey="1" active icon={<DashboardIcon />}>
+                <Nav.Item
+                  onClick={() => navigate("/")}
+                  eventKey="1"
+                  active
+                  icon={<DashboardIcon />}
+                >
                   <Link to="/"> Home </Link>
                 </Nav.Item>
-                <Nav.Item eventKey="2" icon={<GroupIcon />}>
-                  <Link to="/contact"> Contato </Link>
+                <Nav.Item
+                  onClick={() => navigate("/login")}
+                  eventKey="2"
+                  icon={<GroupIcon />}
+                >
+                  <Link to="/login"> Login </Link>
                 </Nav.Item>
                 <Nav.Menu
-                  eventKey="3"
+                  eventKey="4"
                   trigger="hover"
                   title="Avançado"
                   icon={<MagicIcon />}
                   placement="rightStart"
                 >
-                  <Nav.Item eventKey="3-1">Geo</Nav.Item>
-                  <Nav.Item eventKey="3-2">Aparelhos</Nav.Item>
-                  <Nav.Item eventKey="3-3">Brand</Nav.Item>
+                  <Nav.Item eventKey="4-1">Geo</Nav.Item>
+                  <Nav.Item eventKey="4-2">Aparelhos</Nav.Item>
+                  <Nav.Item eventKey="4-3">Brand</Nav.Item>
                 </Nav.Menu>
                 <Nav.Menu
-                  eventKey="4"
+                  eventKey="5"
                   trigger="hover"
                   title="Configurações"
                   icon={<GearCircleIcon />}
                   placement="rightStart"
                 >
-                  <Nav.Item eventKey="4-1">Applications</Nav.Item>
-                  <Nav.Item eventKey="4-2">Websites</Nav.Item>
-                  <Nav.Item eventKey="4-3">Channels</Nav.Item>
-                  <Nav.Item eventKey="4-4">Tags</Nav.Item>
-                  <Nav.Item eventKey="4-5">Versões</Nav.Item>
+                  <Nav.Item eventKey="5-1">Applications</Nav.Item>
+                  <Nav.Item eventKey="5-2">Websites</Nav.Item>
+                  <Nav.Item eventKey="5-3">Channels</Nav.Item>
+                  <Nav.Item eventKey="5-4">Tags</Nav.Item>
+                  <Nav.Item eventKey="5-5">Versões</Nav.Item>
                 </Nav.Menu>
               </Nav>
             </Sidenav.Body>

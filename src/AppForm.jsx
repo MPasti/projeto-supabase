@@ -8,7 +8,8 @@ import {
   FlexboxGrid,
 } from "rsuite";
 import { JSONTree } from "react-json-tree";
-import React from "react";
+import React, { forwardRef, useContext } from "react";
+import { AppContext } from "./context/AppContext";
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const JSONView = ({ formValue, formError }) => (
@@ -49,7 +50,7 @@ const model = Schema.Model({
     .isRequired("Este campo é obrigatório"),
 });
 
-const TextField = React.forwardRef((props, ref) => {
+const TextField = forwardRef((props, ref) => {
   // eslint-disable-next-line react/prop-types
   const { name, label, accepter, ...rest } = props;
   return (
@@ -61,16 +62,10 @@ const TextField = React.forwardRef((props, ref) => {
 });
 
 const AppForm = () => {
+  const { formValue, setFormValue } = useContext(AppContext);
   const formRef = React.useRef();
   // eslint-disable-next-line no-unused-vars
   const [formError, setFormError] = React.useState({});
-  const [formValue, setFormValue] = React.useState({
-    name: "",
-    email: "",
-    age: "",
-    password: "",
-    verifyPassword: "",
-  });
 
   const handleSubmit = () => {
     if (!formRef.current.check()) {
