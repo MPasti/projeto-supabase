@@ -2,7 +2,7 @@
 import React from "react";
 import AppLogin from "../AppLogin";
 
-const Contact = () => {
+const Login = () => {
   return (
     <div>
       <AppLogin />
@@ -10,4 +10,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Login;

@@ -10,7 +10,7 @@ import {
 import { JSONTree } from "react-json-tree";
 import React from "react";
 
-// eslint-disable-next-line react/prop-types
+// eslint-disable-next-line react/prop-types, no-unused-vars
 const JSONView = ({ formValue, formError }) => (
   <div style={{ marginBottom: 10 }}>
     <Panel className="json-tree-wrapper" header={<p>formValue</p>}>
@@ -62,6 +62,7 @@ const TextField = React.forwardRef((props, ref) => {
 
 const AppForm = () => {
   const formRef = React.useRef();
+  // eslint-disable-next-line no-unused-vars
   const [formError, setFormError] = React.useState({});
   const [formValue, setFormValue] = React.useState({
     name: "",
@@ -97,9 +98,18 @@ const AppForm = () => {
   };
 
   return (
-    <FlexboxGrid>
+    <FlexboxGrid
+      style={{
+        justifyContent: "center",
+      }}
+    >
       <FlexboxGrid.Item colspan={12}>
         <Form
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
           ref={formRef}
           onChange={setFormValue}
           onCheck={setFormError}
@@ -135,9 +145,9 @@ const AppForm = () => {
           </ButtonToolbar>
         </Form>
       </FlexboxGrid.Item>
-      <FlexboxGrid.Item colspan={12}>
+      {/* <FlexboxGrid.Item colspan={12}>
         <JSONView formValue={formValue} formError={formError} />
-      </FlexboxGrid.Item>
+      </FlexboxGrid.Item> */}
     </FlexboxGrid>
   );
 };

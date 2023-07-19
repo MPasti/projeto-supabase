@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Modal, ButtonToolbar, Button, Placeholder, Divider } from "rsuite";
+import { Modal, ButtonToolbar, Button, Placeholder } from "rsuite";
 import { AppContext } from "./context/AppContext";
 
 const AppModal = () => {
@@ -22,10 +22,9 @@ const AppModal = () => {
         <Radio value={true}>true</Radio>
         <Radio value={false}>false</Radio>
       </RadioGroup> */}
-      <Divider>Formulário</Divider>
       <ButtonToolbar>
         <Button color="cyan" appearance="ghost" onClick={handleOpen}>
-          Abrir
+          Usuários cadastrados
         </Button>
       </ButtonToolbar>
 
