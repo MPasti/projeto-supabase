@@ -1,22 +1,12 @@
 import { useState } from "react";
-import {
-  Container,
-  Header,
-  Sidebar,
-  Sidenav,
-  Content,
-  Navbar,
-  Nav,
-} from "rsuite";
+import { Container, Sidebar, Sidenav, Navbar, Nav } from "rsuite";
 import AngleLeftIcon from "@rsuite/icons/legacy/AngleLeft";
 import AngleRightIcon from "@rsuite/icons/legacy/AngleRight";
 import GearCircleIcon from "@rsuite/icons/legacy/GearCircle";
 import DashboardIcon from "@rsuite/icons/Dashboard";
 import GroupIcon from "@rsuite/icons/legacy/Group";
-import MagicIcon from "@rsuite/icons/legacy/Magic";
-import AppConection from "./AppConection";
 import ExitIcon from "@rsuite/icons/Exit";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { FaHospital } from "react-icons/fa";
 
 const headerStyles = {
@@ -61,13 +51,13 @@ const NavToggle = ({ expand, onChange }) => {
 
 const AppContainer = () => {
   const navigate = useNavigate();
-  const [expand, setExpand] = useState(true);
+  const [expand, setExpand] = useState(false);
   return (
     <div className="show-fake-browser sidebar-page">
       <Container>
         <Sidebar
           style={{ display: "flex", flexDirection: "column" }}
-          width={expand ? 260 : 56}
+          width={expand ? 260 : 60}
           collapsible
         >
           <Sidenav.Header>
@@ -79,7 +69,7 @@ const AppContainer = () => {
               />
               <span
                 style={{
-                  marginLeft: "15px",
+                  marginLeft: "18px",
                   fontSize: "22px",
                 }}
               >
@@ -100,23 +90,28 @@ const AppContainer = () => {
                   active
                   icon={<DashboardIcon />}
                 >
-                  <Link to="/"> Home </Link>
+                  Home
                 </Nav.Item>
                 <Nav.Item
                   onClick={() => navigate("/login")}
                   eventKey="2"
                   icon={<GroupIcon />}
                 >
-                  <Link to="/login"> Login </Link>
+                  Login
                 </Nav.Item>
                 <Nav.Menu
                   eventKey="4"
                   trigger="hover"
-                  title="Avançado"
-                  icon={<MagicIcon />}
+                  title="Pacientes"
+                  icon={<DashboardIcon />}
                   placement="rightStart"
                 >
-                  <Nav.Item eventKey="4-1">Geo</Nav.Item>
+                  <Nav.Item
+                    onClick={() => navigate("/cadastro-pacientes")}
+                    eventKey="4-1"
+                  >
+                    Cadastro de Pacientes
+                  </Nav.Item>
                   <Nav.Item eventKey="4-2">Aparelhos</Nav.Item>
                   <Nav.Item eventKey="4-3">Brand</Nav.Item>
                 </Nav.Menu>
@@ -139,14 +134,7 @@ const AppContainer = () => {
           <NavToggle expand={expand} onChange={() => setExpand(!expand)} />
         </Sidebar>
 
-        <Container>
-          <Header>
-            <h2 style={{ margin: "2% 0 0 2%" }}> Cadastro de usuários</h2>
-          </Header>
-          <Content>
-            <AppConection></AppConection>
-          </Content>
-        </Container>
+        <Outlet></Outlet>
       </Container>
     </div>
   );

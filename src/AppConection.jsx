@@ -73,7 +73,7 @@ function AppConection() {
   console.log(usuarios);
   return (
     <div className="container">
-      <Divider></Divider>
+      <Divider style={{ margin: "0 0 0 0" }}></Divider>
 
       <div style={{ margin: "30px", position: "relative" }}>
         <div style={{ position: "absolute", right: "5%" }}>

@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
+import AppContainer from "./AppContainer";
 
 const App = () => {
-  return <Outlet></Outlet>;
+  return <AppContainer></AppContainer>;
 };
 export default App;

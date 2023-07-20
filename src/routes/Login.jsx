@@ -1,10 +1,13 @@
+import { Container, Content } from "rsuite";
 import AppLogin from "../AppLogin";
 
 const Login = () => {
   return (
-    <div>
-      <AppLogin />
-    </div>
+    <Container>
+      <Content>
+        <AppLogin></AppLogin>
+      </Content>
+    </Container>
   );
 };
 
