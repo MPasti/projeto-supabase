@@ -103,22 +103,16 @@ const AppFormPacientes = () => {
           formValue={formValue}
           model={model}
         >
-          <TextField style={{ width: 160 }} name="name" label="Usuário" />
+          <TextField name="name" label="Usuário" />
           <Form.HelpText tooltip>Obrigatório</Form.HelpText>
           <TextField name="email" label="Email" />
+          <TextField name="cpf" label="Email" />
+          <TextField name="cep" label="CEP" />
+          <TextField name="endereco" label="Endereço" />
+          <TextField name="bairro" label="Bairro" />
+          <TextField name="cidade" label="Cidade" />
+          <TextField name="estado" label="Estado" />
           <TextField style={{ width: 160 }} name="age" label="Idade" />
-          <TextField
-            name="password"
-            label="Senha"
-            type="password"
-            autoComplete="off"
-          />
-          <TextField
-            name="verifyPassword"
-            label="Verificação de Senha"
-            type="password"
-            autoComplete="off"
-          />
 
           <ButtonToolbar>
             <Button appearance="primary" onClick={handleSubmit}>

@@ -6,7 +6,7 @@ import GearCircleIcon from "@rsuite/icons/legacy/GearCircle";
 import DashboardIcon from "@rsuite/icons/Dashboard";
 import GroupIcon from "@rsuite/icons/legacy/Group";
 import ExitIcon from "@rsuite/icons/Exit";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { FaHospital } from "react-icons/fa";
 
 const headerStyles = {
@@ -23,6 +23,7 @@ const headerStyles = {
 
 // eslint-disable-next-line react/prop-types
 const NavToggle = ({ expand, onChange }) => {
+  const navigate = useNavigate();
   return (
     <Navbar appearance="subtle" className="nav-toggle">
       <Nav>
@@ -34,9 +35,7 @@ const NavToggle = ({ expand, onChange }) => {
         >
           <Nav.Item>Ajuda</Nav.Item>
           <Nav.Item>Configurações</Nav.Item>
-          <Nav.Item>
-            <Link to="/login"> Sair </Link>
-          </Nav.Item>
+          <Nav.Item onClick={() => navigate("/login")}>Sair</Nav.Item>
         </Nav.Menu>
       </Nav>
 
