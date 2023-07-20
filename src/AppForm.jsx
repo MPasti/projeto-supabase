@@ -8,7 +8,7 @@ import {
   FlexboxGrid,
 } from "rsuite";
 import { JSONTree } from "react-json-tree";
-import React, { forwardRef, useContext } from "react";
+import { forwardRef, useContext, useRef, useState } from "react";
 import { AppContext } from "./context/AppContext";
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
@@ -63,9 +63,9 @@ const TextField = forwardRef((props, ref) => {
 
 const AppForm = () => {
   const { formValue, setFormValue } = useContext(AppContext);
-  const formRef = React.useRef();
+  const formRef = useRef();
   // eslint-disable-next-line no-unused-vars
-  const [formError, setFormError] = React.useState({});
+  const [formError, setFormError] = useState({});
 
   const handleSubmit = () => {
     if (!formRef.current.check()) {

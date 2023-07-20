@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
   Container,
   Header,
@@ -61,7 +61,7 @@ const NavToggle = ({ expand, onChange }) => {
 
 const AppContainer = () => {
   const navigate = useNavigate();
-  const [expand, setExpand] = React.useState(true);
+  const [expand, setExpand] = useState(true);
   return (
     <div className="show-fake-browser sidebar-page">
       <Container>

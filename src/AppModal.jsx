@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import { useContext, useState } from "react";
 import { Modal, ButtonToolbar, Button, Placeholder } from "rsuite";
 import { AppContext } from "./context/AppContext";
 
 const AppModal = () => {
   const { usuarios } = useContext(AppContext);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
