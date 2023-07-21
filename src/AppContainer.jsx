@@ -69,10 +69,10 @@ const AppContainer = () => {
               <span
                 style={{
                   marginLeft: "18px",
-                  fontSize: "22px",
+                  fontSize: "20px",
                 }}
               >
-                Hospital
+                Wuthering Heights
               </span>
             </div>
           </Sidenav.Header>
@@ -89,7 +89,7 @@ const AppContainer = () => {
                   active
                   icon={<DashboardIcon />}
                 >
-                  Home
+                  Início
                 </Nav.Item>
                 <Nav.Item
                   onClick={() => navigate("/login")}
@@ -124,8 +124,6 @@ const AppContainer = () => {
                   <Nav.Item eventKey="5-1">Applications</Nav.Item>
                   <Nav.Item eventKey="5-2">Websites</Nav.Item>
                   <Nav.Item eventKey="5-3">Channels</Nav.Item>
-                  <Nav.Item eventKey="5-4">Tags</Nav.Item>
-                  <Nav.Item eventKey="5-5">Versões</Nav.Item>
                 </Nav.Menu>
               </Nav>
             </Sidenav.Body>

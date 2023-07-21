@@ -6,6 +6,9 @@ import {
   Schema,
   Panel,
   FlexboxGrid,
+  Grid,
+  Col,
+  Row,
 } from "rsuite";
 import { JSONTree } from "react-json-tree";
 import { forwardRef, useContext, useRef, useState } from "react";
@@ -27,15 +30,19 @@ const JSONView = ({ formValue, formError }) => (
 const { StringType, NumberType } = Schema.Types;
 
 const model = Schema.Model({
-  name: StringType().isRequired("Este campo é obrigatório"),
+  name: StringType().isRequired("O nome é obrigatório"),
   email: StringType()
     .isEmail("Por favor, entre um Email válido")
     .isRequired("Este campo é obrigatório"),
-  age: NumberType("Por favor, entre um número válido").range(
-    18,
-    30,
-    "Entre uma idade entre 18 e 30"
-  ),
+  age: NumberType("Por favor, entre um número válido")
+    .range(18, 30, "Entre uma idade entre 18 e 30")
+    .isRequired("Por favor entre sua idade"),
+  cpf: StringType().isRequired("O CPF é obrigatório"),
+  cep: StringType().isRequired("O CEP é obrigatório"),
+  endereco: StringType().isRequired("O endereço é obrigatório"),
+  bairro: StringType().isRequired("O bairro é obrigatório"),
+  cidade: StringType().isRequired("A cidade é obrigatório"),
+  estado: StringType().isRequired("O Estado é obrigatório"),
   password: StringType().isRequired("Este campo é obrigatório"),
   verifyPassword: StringType()
     .addRule((value, data) => {
@@ -93,38 +100,78 @@ const AppFormPacientes = () => {
   };
 
   return (
-    <FlexboxGrid style={{ margin: "10%" }}>
-      <FlexboxGrid.Item colspan={24}>
+    <FlexboxGrid
+      style={{
+        margin: "5%",
+        alignItems: "center",
+        justifyContent: "center",
+        alignContent: "center",
+      }}
+    >
+      <FlexboxGrid.Item>
         <Form
-          layout="inline"
           ref={formRef}
           onChange={setFormValue}
           onCheck={setFormError}
           formValue={formValue}
           model={model}
         >
-          <TextField name="name" label="Usuário" />
-          <Form.HelpText tooltip>Obrigatório</Form.HelpText>
-          <TextField name="email" label="Email" />
-          <TextField name="cpf" label="Email" />
-          <TextField name="cep" label="CEP" />
-          <TextField name="endereco" label="Endereço" />
-          <TextField name="bairro" label="Bairro" />
-          <TextField name="cidade" label="Cidade" />
-          <TextField name="estado" label="Estado" />
-          <TextField style={{ width: 160 }} name="age" label="Idade" />
+          <Grid>
+            <Row>
+              <Col xs={5} xsPush={0}>
+                <TextField name="name" label="Nome"></TextField>
+              </Col>
 
-          <ButtonToolbar>
-            <Button appearance="primary" onClick={handleSubmit}>
-              Enviar
-            </Button>
+              <Col xs={5} xsPush={3}>
+                <TextField name="email" label="Email" />
+              </Col>
+              <Col xs={5} xsPush={6}>
+                <TextField name="cpf" label="CPF" />
+              </Col>
+            </Row>
+          </Grid>
 
-            <Button color="orange" appearance="ghost" onClick={handleClean}>
-              Limpar
-            </Button>
+          <Grid style={{ marginTop: "5%" }}>
+            <Row>
+              <Col xs={5} xsPush={0}>
+                <TextField name="cep" label="CEP" />
+              </Col>
+              <Col xs={5} xsPush={3}>
+                <TextField name="endereco" label="Endereço" />
+              </Col>
+              <Col xs={5} xsPush={6}>
+                <TextField name="bairro" label="Bairro" />
+              </Col>
+            </Row>
+          </Grid>
 
-            <Button onClick={handleCheckEmail}>Verificar Email</Button>
-          </ButtonToolbar>
+          <Grid style={{ marginTop: "5%" }}>
+            <Row>
+              <Col xs={5} xsPush={0}>
+                <TextField name="cidade" label="Cidade" />
+              </Col>
+              <Col xs={5} xsPush={3}>
+                <TextField name="estado" label="Estado" />
+              </Col>
+              <Col xs={5} xsPush={6}>
+                <TextField name="age" label="Idade" />
+              </Col>
+            </Row>
+
+            <div style={{ margin: "5% 0% 0% 0%" }}>
+              <ButtonToolbar>
+                <Button appearance="primary" onClick={handleSubmit}>
+                  Enviar
+                </Button>
+
+                <Button color="orange" appearance="ghost" onClick={handleClean}>
+                  Limpar
+                </Button>
+
+                <Button onClick={handleCheckEmail}>Verificar Email</Button>
+              </ButtonToolbar>
+            </div>
+          </Grid>
         </Form>
       </FlexboxGrid.Item>
       {/* <FlexboxGrid.Item colspan={12}>
