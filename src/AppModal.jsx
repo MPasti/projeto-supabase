@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Modal, ButtonToolbar, Button, Placeholder } from "rsuite";
+import { Modal, ButtonToolbar, Button } from "rsuite";
 import { AppContext } from "./context/AppContext";
 
 const AppModal = () => {
@@ -34,7 +34,6 @@ const AppModal = () => {
         </Modal.Header>
 
         <Modal.Body>
-          <Placeholder.Paragraph />
           <ul>
             {usuarios.map((usuario) => (
               <li key={usuario.id}>{usuario.nome}</li>

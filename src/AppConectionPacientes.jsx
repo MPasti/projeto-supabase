@@ -6,14 +6,14 @@ import "rsuite/dist/rsuite.min.css";
 import { useContext } from "react";
 import { AppContext } from "./context/AppContext";
 import AppModal from "./AppModal";
-import AppForm from "./AppForm";
+import AppFormPacientes from "./AppFormPacientes";
 
 const supabase = createClient(
   "https://fdtnfwnyiknfkxwvcfbq.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkdG5md255aWtuZmt4d3ZjZmJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODkzNDY1NDIsImV4cCI6MjAwNDkyMjU0Mn0.9UmG6GIaDyHQ7qfizkTnR_py_2__vokyiXiBwiqCttA"
 );
 
-function AppConection() {
+function AppConectionPacientes() {
   const { usuarios, setUsuarios, refresh, setRefresh, formValue } =
     useContext(AppContext);
 
@@ -21,14 +21,14 @@ function AppConection() {
 
   //função de get
   async function getUsuarios() {
-    const { data } = await supabase.from("usuarios_cadastrados").select();
+    const { data } = await supabase.from("cadastro_usuarios").select();
     setUsuarios(data);
   }
   //função de insert
   async function updateUsuarios() {
     const { error } = await supabase
-      .from("usuarios_cadastrados")
-      .update({ usuario: "Matheus" })
+      .from("cadastro_usuarios")
+      .update({ nome: "Matheus" })
       .eq("id", 1);
     if (error) {
       console.log(error.message);
@@ -37,11 +37,15 @@ function AppConection() {
   }
 
   async function insertUsuarios() {
-    const { error } = await supabase.from("usuarios_cadastrados").insert({
-      usuario: formValue.name,
+    const { error } = await supabase.from("cadastro_usuarios").insert({
+      nome: formValue.name,
       email: formValue.email,
-      senha: formValue.password,
-      idade: formValue.age,
+      cpf: 11122233340,
+      endereco: "Rua Whatsapp",
+      bairro: "Vila da folha",
+      cidade: "São Paulo",
+      estado: "SP",
+      cep: "14403640",
     });
     if (error) {
       console.log(error.message);
@@ -51,7 +55,7 @@ function AppConection() {
 
   async function deleteUsuarios() {
     const { error } = await supabase
-      .from("usuarios_cadastrados")
+      .from("cadastro_usuarios")
       .delete()
       .eq("id", 5);
     if (error) {
@@ -75,7 +79,7 @@ function AppConection() {
         <div style={{ position: "absolute", right: "5%" }}>
           <AppModal></AppModal>
         </div>
-        <AppForm></AppForm>
+        <AppFormPacientes></AppFormPacientes>
       </div>
 
       <div className="button-container" style={{ marginTop: "15px" }}>
@@ -105,4 +109,4 @@ function AppConection() {
   );
 }
 
-export default AppConection;
+export default AppConectionPacientes;

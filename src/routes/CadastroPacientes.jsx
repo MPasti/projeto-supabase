@@ -1,5 +1,5 @@
 import { Container, Content, Header } from "rsuite";
-import AppFormPacientes from "../AppFormPacientes";
+import AppConectionPacientes from "../AppConectionPacientes";
 
 const CadastroPacientes = () => {
   return (
@@ -8,7 +8,7 @@ const CadastroPacientes = () => {
         <h2 style={{ margin: "1.2% 0 0 2%" }}> Cadastro de Pacientes</h2>
       </Header>
       <Content>
-        <AppFormPacientes></AppFormPacientes>
+        <AppConectionPacientes></AppConectionPacientes>
       </Content>
     </Container>
   );

@@ -13,6 +13,17 @@ export const AppProvider = ({ children }) => {
     password: "",
     verifyPassword: "",
   });
+  const [formPacientes, setFormPacientes] = useState({
+    name: "",
+    email: "",
+    age: "",
+    cpf: "",
+    endereco: "",
+    bairro: "",
+    cidade: "",
+    estado: "",
+    cep: "",
+  });
 
   const value = {
     usuarios,
@@ -21,6 +32,8 @@ export const AppProvider = ({ children }) => {
     setRefresh,
     formValue,
     setFormValue,
+    formPacientes,
+    setFormPacientes,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
