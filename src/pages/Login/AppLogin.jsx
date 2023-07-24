@@ -20,7 +20,7 @@ const AppLogin = () => {
         <Header>
           <Navbar appearance="inverse">
             <Navbar.Brand>
-              <a style={{ color: "#fff" }}>Brand</a>
+              <a style={{ color: "#fff" }}>Wuthering Heights</a>
             </Navbar.Brand>
           </Navbar>
         </Header>

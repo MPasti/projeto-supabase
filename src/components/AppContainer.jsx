@@ -64,7 +64,7 @@ const AppContainer = () => {
   const [expand, setExpand] = useState(false);
   return (
     <div className="show-fake-browser sidebar-page">
-      <Container>
+      <Container style={{ height: "100vh" }}>
         <Sidebar
           style={{ display: "flex", flexDirection: "column" }}
           width={expand ? 260 : 55}
