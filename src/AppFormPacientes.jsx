@@ -69,7 +69,7 @@ const TextField = forwardRef((props, ref) => {
 });
 
 const AppFormPacientes = () => {
-  const { formValue, setFormValue } = useContext(AppContext);
+  const { formPacientes, setFormPacientes } = useContext(AppContext);
   const formRef = useRef();
   // eslint-disable-next-line no-unused-vars
   const [formError, setFormError] = useState({});
@@ -79,16 +79,20 @@ const AppFormPacientes = () => {
       console.error("Form Error");
       return;
     }
-    console.log(formValue, "Form Value");
+    console.log(formPacientes, "Form Value");
   };
 
   const handleClean = () => {
-    setFormValue({
+    setFormPacientes({
       name: "",
       email: "",
       age: "",
-      password: "",
-      verifyPassword: "",
+      cpf: "",
+      endereco: "",
+      bairro: "",
+      cidade: "",
+      estado: "",
+      cep: "",
     });
     setFormError({});
   };
@@ -111,9 +115,9 @@ const AppFormPacientes = () => {
       <FlexboxGrid.Item>
         <Form
           ref={formRef}
-          onChange={setFormValue}
+          onChange={setFormPacientes}
           onCheck={setFormError}
-          formValue={formValue}
+          formValue={formPacientes}
           model={model}
         >
           <Grid>

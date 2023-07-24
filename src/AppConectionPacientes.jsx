@@ -14,7 +14,7 @@ const supabase = createClient(
 );
 
 function AppConectionPacientes() {
-  const { usuarios, setUsuarios, refresh, setRefresh, formValue } =
+  const { usuarios, setUsuarios, refresh, setRefresh, formPacientes } =
     useContext(AppContext);
 
   //state para ao dar o insert, mudar o estado e usar o useEffect toda vez que der refresh e mudar o nome
@@ -38,14 +38,15 @@ function AppConectionPacientes() {
 
   async function insertUsuarios() {
     const { error } = await supabase.from("cadastro_usuarios").insert({
-      nome: formValue.name,
-      email: formValue.email,
-      cpf: 11122233340,
-      endereco: "Rua Whatsapp",
-      bairro: "Vila da folha",
-      cidade: "São Paulo",
-      estado: "SP",
-      cep: "14403640",
+      nome: formPacientes.name,
+      email: formPacientes.email,
+      cpf: formPacientes.cpf,
+      idade: formPacientes.age,
+      endereco: formPacientes.endereco,
+      bairro: formPacientes.bairro,
+      cidade: formPacientes.cidade,
+      estado: formPacientes.estado,
+      cep: formPacientes.cep,
     });
     if (error) {
       console.log(error.message);
@@ -73,12 +74,11 @@ function AppConectionPacientes() {
   console.log(usuarios);
   return (
     <div className="container">
-      <Divider style={{ margin: "0 0 0 0" }}></Divider>
-
+      <Divider style={{ margin: "0 0 2% 0" }}></Divider>
+      <div style={{ position: "absolute", right: "5%" }}>
+        <AppModal></AppModal>
+      </div>
       <div style={{ margin: "30px", position: "relative" }}>
-        <div style={{ position: "absolute", right: "5%" }}>
-          <AppModal></AppModal>
-        </div>
         <AppFormPacientes></AppFormPacientes>
       </div>
 

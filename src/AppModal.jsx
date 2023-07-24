@@ -24,13 +24,13 @@ const AppModal = () => {
       </RadioGroup> */}
       <ButtonToolbar>
         <Button color="cyan" appearance="ghost" onClick={handleOpen}>
-          Usuários cadastrados
+          Pacientes cadastrados
         </Button>
       </ButtonToolbar>
 
       <Modal backdrop={true} keyboard={false} open={open} onClose={handleClose}>
         <Modal.Header>
-          <Modal.Title>Lista de usuários cadastrados</Modal.Title>
+          <Modal.Title>Lista de pacientes cadastrados</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
