@@ -8,6 +8,8 @@ import GroupIcon from "@rsuite/icons/legacy/Group";
 import ExitIcon from "@rsuite/icons/Exit";
 import { Outlet, useNavigate } from "react-router-dom";
 import { FaHospital } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import "./styles.css";
 
 const headerStyles = {
   display: "block",
@@ -31,7 +33,16 @@ const NavToggle = ({ expand, onChange }) => {
           noCaret
           placement="topStart"
           trigger="click"
-          title={<ExitIcon style={{ width: 20, height: 20 }} size="sm" />}
+          title={
+            <div style={{ marginLeft: "5px" }}>
+              <ExitIcon
+                style={{
+                  fontSize: "18px",
+                }}
+                size="sm"
+              />
+            </div>
+          }
         >
           <Nav.Item>Ajuda</Nav.Item>
           <Nav.Item>Configurações</Nav.Item>
@@ -40,7 +51,7 @@ const NavToggle = ({ expand, onChange }) => {
       </Nav>
 
       <Nav pullRight>
-        <Nav.Item onClick={onChange} style={{ width: 56, textAlign: "center" }}>
+        <Nav.Item onClick={onChange}>
           {expand ? <AngleLeftIcon /> : <AngleRightIcon />}
         </Nav.Item>
       </Nav>
@@ -56,7 +67,7 @@ const AppContainer = () => {
       <Container>
         <Sidebar
           style={{ display: "flex", flexDirection: "column" }}
-          width={expand ? 260 : 60}
+          width={expand ? 260 : 55}
           collapsible
         >
           <Sidenav.Header>
@@ -68,7 +79,7 @@ const AppContainer = () => {
               />
               <span
                 style={{
-                  marginLeft: "18px",
+                  marginLeft: "16px",
                   fontSize: "20px",
                 }}
               >
@@ -86,8 +97,16 @@ const AppContainer = () => {
                 <Nav.Item
                   onClick={() => navigate("/")}
                   eventKey="1"
-                  active
-                  icon={<DashboardIcon />}
+                  icon={
+                    <FaHome
+                      style={{
+                        marginLeft: "-37px",
+                        marginRight: "18px",
+                        fontSize: "18px",
+                      }}
+                    />
+                  }
+                  placement="rightStart"
                 >
                   Início
                 </Nav.Item>
@@ -95,6 +114,7 @@ const AppContainer = () => {
                   onClick={() => navigate("/login")}
                   eventKey="2"
                   icon={<GroupIcon />}
+                  placement="rightStart"
                 >
                   Login
                 </Nav.Item>
