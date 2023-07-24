@@ -1,5 +1,5 @@
 import { Container, Content, Header } from "rsuite";
-import AppConectionPacientes from "../AppConectionPacientes";
+import AppConectionPacientes from "../pages/CadastroPacientes/AppConectionPacientes";
 
 const CadastroPacientes = () => {
   return (

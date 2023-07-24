@@ -1,5 +1,5 @@
 import { Container, Content, Header } from "rsuite";
-import AppConection from "../AppConection";
+import AppConection from "../pages/CadastroUsuarios/AppConection";
 
 const Home = () => {
   return (

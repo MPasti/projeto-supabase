@@ -9,7 +9,7 @@ import {
 } from "rsuite";
 import { JSONTree } from "react-json-tree";
 import { forwardRef, useContext, useRef, useState } from "react";
-import { AppContext } from "./context/AppContext";
+import { AppContext } from "../../context/AppContext";
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const JSONView = ({ formValue, formError }) => (

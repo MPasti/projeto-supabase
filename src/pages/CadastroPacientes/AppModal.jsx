@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Modal, ButtonToolbar, Button } from "rsuite";
-import { AppContext } from "./context/AppContext";
+import { AppContext } from "../../context/AppContext";
 
 const AppModal = () => {
   const { usuarios } = useContext(AppContext);

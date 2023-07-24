@@ -4,8 +4,8 @@ import { Button, Divider } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 
 import { useContext } from "react";
-import { AppContext } from "./context/AppContext";
-import AppModal from "./AppModal";
+import { AppContext } from "../../context/AppContext";
+import AppModal from "../CadastroPacientes/AppModal";
 import AppForm from "./AppForm";
 
 const supabase = createClient(

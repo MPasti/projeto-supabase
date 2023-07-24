@@ -4,7 +4,7 @@ import { Button, Divider } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 
 import { useContext } from "react";
-import { AppContext } from "./context/AppContext";
+import { AppContext } from "../../context/AppContext";
 import AppModal from "./AppModal";
 import AppFormPacientes from "./AppFormPacientes";
 
