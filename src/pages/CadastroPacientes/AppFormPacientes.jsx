@@ -43,18 +43,6 @@ const model = Schema.Model({
   bairro: StringType().isRequired("O bairro é obrigatório"),
   cidade: StringType().isRequired("A cidade é obrigatório"),
   estado: StringType().isRequired("O Estado é obrigatório"),
-  password: StringType().isRequired("Este campo é obrigatório"),
-  verifyPassword: StringType()
-    .addRule((value, data) => {
-      console.log(data);
-
-      if (value !== data.password) {
-        return false;
-      }
-
-      return true;
-    }, "As duas senhas não correspondem")
-    .isRequired("Este campo é obrigatório"),
 });
 
 const TextField = forwardRef((props, ref) => {
@@ -69,7 +57,8 @@ const TextField = forwardRef((props, ref) => {
 });
 
 const AppFormPacientes = () => {
-  const { formPacientes, setFormPacientes } = useContext(AppContext);
+  const { formPacientes, setFormPacientes, insertPacientes } =
+    useContext(AppContext);
   const formRef = useRef();
   // eslint-disable-next-line no-unused-vars
   const [formError, setFormError] = useState({});
@@ -80,6 +69,7 @@ const AppFormPacientes = () => {
       return;
     }
     console.log(formPacientes, "Form Value");
+    insertPacientes();
   };
 
   const handleClean = () => {

@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
 import { Button, Divider } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 
@@ -8,13 +7,8 @@ import { AppContext } from "../../context/AppContext";
 import AppModal from "../CadastroPacientes/AppModal";
 import AppForm from "./AppForm";
 
-const supabase = createClient(
-  "https://fdtnfwnyiknfkxwvcfbq.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkdG5md255aWtuZmt4d3ZjZmJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODkzNDY1NDIsImV4cCI6MjAwNDkyMjU0Mn0.9UmG6GIaDyHQ7qfizkTnR_py_2__vokyiXiBwiqCttA"
-);
-
 function AppConection() {
-  const { usuarios, setUsuarios, refresh, setRefresh, formValue } =
+  const { usuarios, setUsuarios, refresh, setRefresh, formValue, supabase } =
     useContext(AppContext);
 
   //state para ao dar o insert, mudar o estado e usar o useEffect toda vez que der refresh e mudar o nome

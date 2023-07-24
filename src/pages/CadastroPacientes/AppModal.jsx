@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Modal, ButtonToolbar, Button } from "rsuite";
 import { AppContext } from "../../context/AppContext";
+import { FaSearch } from "react-icons/fa";
 
 const AppModal = () => {
   const { usuarios } = useContext(AppContext);
@@ -24,7 +25,7 @@ const AppModal = () => {
       </RadioGroup> */}
       <ButtonToolbar>
         <Button color="cyan" appearance="ghost" onClick={handleOpen}>
-          Pacientes cadastrados
+          <FaSearch style={{ marginRight: "5px" }} /> Pacientes cadastrados
         </Button>
       </ButtonToolbar>
 

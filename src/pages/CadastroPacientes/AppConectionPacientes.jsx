@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
 import { Button, Divider } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 
@@ -8,14 +7,15 @@ import { AppContext } from "../../context/AppContext";
 import AppModal from "./AppModal";
 import AppFormPacientes from "./AppFormPacientes";
 
-const supabase = createClient(
-  "https://fdtnfwnyiknfkxwvcfbq.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkdG5md255aWtuZmt4d3ZjZmJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODkzNDY1NDIsImV4cCI6MjAwNDkyMjU0Mn0.9UmG6GIaDyHQ7qfizkTnR_py_2__vokyiXiBwiqCttA"
-);
-
 function AppConectionPacientes() {
-  const { usuarios, setUsuarios, refresh, setRefresh, formPacientes } =
-    useContext(AppContext);
+  const {
+    usuarios,
+    setUsuarios,
+    refresh,
+    setRefresh,
+    supabase,
+    insertPacientes,
+  } = useContext(AppContext);
 
   //state para ao dar o insert, mudar o estado e usar o useEffect toda vez que der refresh e mudar o nome
 
@@ -30,24 +30,6 @@ function AppConectionPacientes() {
       .from("cadastro_usuarios")
       .update({ nome: "Matheus" })
       .eq("id", 1);
-    if (error) {
-      console.log(error.message);
-    }
-    setRefresh(true);
-  }
-
-  async function insertUsuarios() {
-    const { error } = await supabase.from("cadastro_usuarios").insert({
-      nome: formPacientes.name,
-      email: formPacientes.email,
-      cpf: formPacientes.cpf,
-      idade: formPacientes.age,
-      endereco: formPacientes.endereco,
-      bairro: formPacientes.bairro,
-      cidade: formPacientes.cidade,
-      estado: formPacientes.estado,
-      cep: formPacientes.cep,
-    });
     if (error) {
       console.log(error.message);
     }
@@ -93,7 +75,7 @@ function AppConectionPacientes() {
         <Button
           appearance="primary"
           style={{ marginRight: "10px" }}
-          onClick={insertUsuarios}
+          onClick={insertPacientes}
         >
           insert
         </Button>
