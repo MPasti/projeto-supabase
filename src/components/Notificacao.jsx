@@ -18,7 +18,7 @@ export const successMessage = (
 
 export const errorMessage = (
   <Notification type={"error"} header={"Erro"} closable>
-    <Placeholder.Paragraph style={{ width: 320 }} rows={3} />
+    <h5> Formulário não preenchido corretamente </h5>
     <hr />
   </Notification>
 );

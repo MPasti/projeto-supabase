@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
 import { supabase } from "../supabase/Client";
 
 export const AppContext = createContext();
@@ -18,13 +17,14 @@ export const AppProvider = ({ children }) => {
   const [formPacientes, setFormPacientes] = useState({
     name: "",
     email: "",
-    age: "",
+    age: 0,
     cpf: "",
     endereco: "",
     bairro: "",
     cidade: "",
     estado: "",
     cep: "",
+    nascimento: null,
   });
 
   async function getUsuarios() {
@@ -65,6 +65,7 @@ export const AppProvider = ({ children }) => {
       cidade: formPacientes.cidade,
       estado: formPacientes.estado,
       cep: formPacientes.cep,
+      nascimento: formPacientes.nascimento,
     });
     if (error) {
       console.log(error.message);

@@ -1,4 +1,4 @@
-/* eslint-disable react/display-name */
+import * as locales from "rsuite/locales";
 import {
   Form,
   Button,
@@ -10,11 +10,12 @@ import {
   Col,
   Row,
   useToaster,
+  DatePicker,
 } from "rsuite";
 import { JSONTree } from "react-json-tree";
 import { forwardRef, useContext, useRef, useState } from "react";
 import { AppContext } from "../../context/AppContext";
-import { successMessage } from "../../components/Notificacao";
+import { successMessage, errorMessage } from "../../components/Notificacao";
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const JSONView = ({ formValue, formError }) => (
@@ -66,10 +67,10 @@ const AppFormPacientes = () => {
   const formRef = useRef();
   // eslint-disable-next-line no-unused-vars
   const [formError, setFormError] = useState({});
-
   const handleSubmit = () => {
     if (!formRef.current.check()) {
       console.error("Form Error");
+      toaster.push(errorMessage, { placement });
       return;
     }
     console.log(formPacientes, "Form Value");
@@ -88,6 +89,7 @@ const AppFormPacientes = () => {
       cidade: "",
       estado: "",
       cep: "",
+      nascimento: null,
     });
     setFormError({});
   };
@@ -153,7 +155,30 @@ const AppFormPacientes = () => {
                 <TextField name="estado" label="Estado" />
               </Col>
               <Col xs={5} xsPush={6}>
-                <TextField name="age" label="Idade" />
+                <Form.Group controlId="nascimento" style={{ width: 300 }}>
+                  <Form.ControlLabel>Data de nascimento</Form.ControlLabel>
+                  <Form.Control
+                    style={{ width: 300 }}
+                    name="nascimento"
+                    format="dd/MM/yyyy"
+                    accepter={DatePicker}
+                    locale={{
+                      sunday: "Dom",
+                      monday: "Seg",
+                      tuesday: "Terç",
+                      wednesday: "Qua",
+                      thursday: "Qui",
+                      friday: "Sex",
+                      saturday: "Sáb",
+                      ok: "OK",
+                      today: "Hoje",
+                      yesterday: "Ontem",
+                      hours: "Horas",
+                      minutes: "Minutos",
+                      seconds: "Segundos",
+                    }}
+                  />
+                </Form.Group>
               </Col>
             </Row>
 
@@ -171,7 +196,14 @@ const AppFormPacientes = () => {
                     toaster.push(successMessage, { placement });
                   }}
                 >
-                  Notificação
+                  Sucesso
+                </Button>
+                <Button
+                  onClick={() => {
+                    toaster.push(errorMessage, { placement });
+                  }}
+                >
+                  Erro
                 </Button>
                 <Button onClick={handleCheckEmail}>Verificar Email</Button>
               </ButtonToolbar>
@@ -179,9 +211,9 @@ const AppFormPacientes = () => {
           </Grid>
         </Form>
       </FlexboxGrid.Item>
-      {/* <FlexboxGrid.Item colspan={12}>
-        <JSONView formValue={formValue} formError={formError} />
-      </FlexboxGrid.Item> */}
+      <FlexboxGrid.Item colspan={12}>
+        <JSONView formValue={formPacientes} formError={formError} />
+      </FlexboxGrid.Item>
     </FlexboxGrid>
   );
 };
