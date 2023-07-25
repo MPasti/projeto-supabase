@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import AppModal from "./AppModal";
 import AppFormPacientes from "./AppFormPacientes";
+import Notificacao from "../../components/Notificacao";
 
 function AppConectionPacientes() {
   const { usuarios, refresh, setRefresh, getUsuarios } = useContext(AppContext);

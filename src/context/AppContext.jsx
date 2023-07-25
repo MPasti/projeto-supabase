@@ -1,14 +1,11 @@
 import { createContext, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
+import { supabase } from "../supabase/Client";
 
 export const AppContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const AppProvider = ({ children }) => {
-  const supabase = createClient(
-    "https://fdtnfwnyiknfkxwvcfbq.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkdG5md255aWtuZmt4d3ZjZmJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODkzNDY1NDIsImV4cCI6MjAwNDkyMjU0Mn0.9UmG6GIaDyHQ7qfizkTnR_py_2__vokyiXiBwiqCttA"
-  );
   const [usuarios, setUsuarios] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [formValue, setFormValue] = useState({

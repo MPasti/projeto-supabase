@@ -9,10 +9,12 @@ import {
   Grid,
   Col,
   Row,
+  useToaster,
 } from "rsuite";
 import { JSONTree } from "react-json-tree";
 import { forwardRef, useContext, useRef, useState } from "react";
 import { AppContext } from "../../context/AppContext";
+import { successMessage } from "../../components/Notificacao";
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const JSONView = ({ formValue, formError }) => (
@@ -57,6 +59,8 @@ const TextField = forwardRef((props, ref) => {
 });
 
 const AppFormPacientes = () => {
+  const [placement, setPlacement] = useState("topEnd");
+  const toaster = useToaster();
   const { formPacientes, setFormPacientes, insertPacientes } =
     useContext(AppContext);
   const formRef = useRef();
@@ -70,6 +74,7 @@ const AppFormPacientes = () => {
     }
     console.log(formPacientes, "Form Value");
     insertPacientes();
+    toaster.push(successMessage, { placement });
   };
 
   const handleClean = () => {
@@ -161,7 +166,13 @@ const AppFormPacientes = () => {
                 <Button color="orange" appearance="ghost" onClick={handleClean}>
                   Limpar
                 </Button>
-
+                <Button
+                  onClick={() => {
+                    toaster.push(successMessage, { placement });
+                  }}
+                >
+                  Notificação
+                </Button>
                 <Button onClick={handleCheckEmail}>Verificar Email</Button>
               </ButtonToolbar>
             </div>
