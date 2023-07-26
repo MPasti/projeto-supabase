@@ -30,6 +30,11 @@ const JSONView = ({ formValue, formError }) => (
   </div>
 );
 
+const data = Object.keys(locales).map((key) => ({
+  key,
+  value: locales[key],
+}));
+
 const { StringType, NumberType } = Schema.Types;
 
 const model = Schema.Model({
@@ -49,7 +54,6 @@ const model = Schema.Model({
 });
 
 const TextField = forwardRef((props, ref) => {
-  // eslint-disable-next-line react/prop-types
   const { name, label, accepter, ...rest } = props;
   return (
     <Form.Group controlId={`${name}-4`} ref={ref}>
@@ -60,9 +64,10 @@ const TextField = forwardRef((props, ref) => {
 });
 
 const AppFormPacientes = () => {
-  const [placement, setPlacement] = useState("topEnd");
+  const [localeKey, setLocaleKey] = useState("ptBR");
+  const locale = data.find((item) => item.key === localeKey);
   const toaster = useToaster();
-  const { formPacientes, setFormPacientes, insertPacientes } =
+  const { formPacientes, setFormPacientes, insertPacientes, local, placement } =
     useContext(AppContext);
   const formRef = useRef();
   // eslint-disable-next-line no-unused-vars
@@ -162,21 +167,7 @@ const AppFormPacientes = () => {
                     name="nascimento"
                     format="dd/MM/yyyy"
                     accepter={DatePicker}
-                    locale={{
-                      sunday: "Dom",
-                      monday: "Seg",
-                      tuesday: "Terç",
-                      wednesday: "Qua",
-                      thursday: "Qui",
-                      friday: "Sex",
-                      saturday: "Sáb",
-                      ok: "OK",
-                      today: "Hoje",
-                      yesterday: "Ontem",
-                      hours: "Horas",
-                      minutes: "Minutos",
-                      seconds: "Segundos",
-                    }}
+                    locale={local}
                   />
                 </Form.Group>
               </Col>

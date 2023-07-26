@@ -7,6 +7,7 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [placement, setPlacement] = useState("topEnd");
   const [formValue, setFormValue] = useState({
     name: "",
     email: "",
@@ -26,6 +27,22 @@ export const AppProvider = ({ children }) => {
     cep: "",
     nascimento: null,
   });
+
+  const local = {
+    sunday: "Dom",
+    monday: "Seg",
+    tuesday: "Terç",
+    wednesday: "Qua",
+    thursday: "Qui",
+    friday: "Sex",
+    saturday: "Sáb",
+    ok: "OK",
+    today: "Hoje",
+    yesterday: "Ontem",
+    hours: "Horas",
+    minutes: "Minutos",
+    seconds: "Segundos",
+  };
 
   async function getUsuarios() {
     const { data } = await supabase.from("cadastro_usuarios").select();
@@ -87,6 +104,8 @@ export const AppProvider = ({ children }) => {
     getUsuarios,
     updateUsuarios,
     deleteUsuarios,
+    local,
+    placement,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -1,5 +1,5 @@
 import { Container, Content } from "rsuite";
-import AppLogin from "../pages/Login/AppLogin";
+import AppLogin from "../pages/Login/LoginPage";
 
 const Login = () => {
   return (

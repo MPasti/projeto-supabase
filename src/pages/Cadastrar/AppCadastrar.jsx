@@ -12,7 +12,7 @@ import {
 } from "rsuite";
 import { useNavigate } from "react-router-dom";
 
-const AppLogin = () => {
+const AppCadastrar = () => {
   const navigate = useNavigate();
   return (
     <div className="show-fake-browser login-page">
@@ -70,4 +70,4 @@ const AppLogin = () => {
     </div>
   );
 };
-export default AppLogin;
+export default AppCadastrar;
