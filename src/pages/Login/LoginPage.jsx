@@ -20,7 +20,50 @@ function AppLogin() {
       <header className="App-header">
         <Auth
           supabaseClient={supabase}
-          appearance={{ theme: ThemeSupa }}
+          localization={{
+            variables: {
+              sign_in: {
+                email_label: "Entre com seu Email",
+                password_label: "Entre com sua senha",
+                email_input_placeholder: "Email",
+                password_input_placeholder: "Senha",
+                button_label: "Entrar",
+                loading_button_label: "Entrando...",
+                social_provider_text: "Entrar com o {{provider}}",
+                link_text: "Logar com uma conta",
+                confirmation_text: "Olhe seu Email pelo link de confirmação",
+              },
+              sign_up: {
+                email_label: "Entre com seu Email",
+                password_label: "Crie uma senha",
+                email_input_placeholder: "Email",
+                password_input_placeholder: "Senha",
+                button_label: "Entrar",
+                loading_button_label: "Entrando...",
+                social_provider_text: "Entrar com o {{provider}}",
+                link_text: "Não possui uma conta? Crie uma!",
+                confirmation_text: "Olhe seu Email pelo link de confirmação",
+              },
+              forgotten_password: {
+                email_label: "Entre seu Email",
+                password_label: "Entre com sua senha",
+                email_input_placeholder: "Email",
+                password_input_placeholder: "Senha",
+                button_label: "Entrar",
+                loading_button_label: "Entrando...",
+                social_provider_text: "Entrar com o {{provider}}",
+                link_text: "Esqueceu sua senha?",
+                confirmation_text: "Olhe seu Email pelo link de confirmação",
+              },
+            },
+          }}
+          appearance={{
+            style: {
+              button: { background: "black", color: "white" },
+              anchor: { color: "blue" },
+              //..
+            },
+          }}
           providers={["discord", "google"]}
         />
       </header>
