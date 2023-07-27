@@ -31,11 +31,17 @@ function AppConection() {
   }
 
   async function insertUsuarios() {
+    async function signInWithEmail() {
+      const { data, error } = await supabase.auth.signUp({
+        email: formValue.name,
+        password: formValue.password,
+      });
+    }
+    console.log(formValue);
     const { error } = await supabase.from("usuarios_cadastrados").insert({
       usuario: formValue.name,
       email: formValue.email,
       senha: formValue.password,
-      idade: formValue.age,
     });
     if (error) {
       console.log(error.message);

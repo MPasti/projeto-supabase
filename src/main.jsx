@@ -9,6 +9,7 @@ import Login from "./routes/Login.jsx";
 import CadastroPacientes from "./routes/CadastroPacientes.jsx";
 import Success from "./routes/Success.jsx";
 import Calendario from "./routes/Calendario.jsx";
+import { AppProvider } from "./context/AppContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,8 +24,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
-import { AppProvider } from "./context/AppContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

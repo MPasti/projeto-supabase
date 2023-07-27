@@ -18,7 +18,9 @@
     "@supabase/auth-ui-shared": "^0.1.6",
     "@supabase/supabase-js": "^2.26.0",
     "date-fns": "^2.23.0",
+    "faker-js": "^1.0.0",
     "fullcalendar": "^6.1.8",
+    "mock": "^0.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
@@ -28,6 +30,7 @@
     "rsuite": "^5.37.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@vitejs/plugin-react": "^4.0.1",

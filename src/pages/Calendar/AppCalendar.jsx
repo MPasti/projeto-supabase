@@ -18,7 +18,7 @@ export default class DemoApp extends React.Component {
         {this.renderSidebar()}
         <div
           className="demo-app-main"
-          style={{ width: "650px", margin: "auto" }}
+          style={{ width: "640px", margin: "auto" }}
         >
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}

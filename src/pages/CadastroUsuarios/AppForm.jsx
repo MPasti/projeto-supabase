@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import {
   Form,
   Button,
@@ -31,11 +30,6 @@ const model = Schema.Model({
   email: StringType()
     .isEmail("Por favor, entre um Email válido")
     .isRequired("Este campo é obrigatório"),
-  age: NumberType("Por favor, entre um número válido").range(
-    18,
-    30,
-    "Entre uma idade entre 18 e 30"
-  ),
   password: StringType().isRequired("Este campo é obrigatório"),
   verifyPassword: StringType()
     .addRule((value, data) => {
@@ -113,7 +107,6 @@ const AppForm = () => {
         >
           <TextField name="name" label="Usuário" />
           <TextField name="email" label="Email" />
-          <TextField name="age" label="Idade" />
           <TextField
             name="password"
             label="Senha"

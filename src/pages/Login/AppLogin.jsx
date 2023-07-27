@@ -11,9 +11,23 @@ import {
   FlexboxGrid,
 } from "rsuite";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const AppLogin = () => {
   const navigate = useNavigate();
+  const [loginForm, setLoginForm] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  async function signInWithEmail() {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: loginForm.email,
+      password: loginForm.password,
+    });
+  }
+
   return (
     <div className="show-fake-browser login-page">
       <Container>
@@ -28,7 +42,14 @@ const AppLogin = () => {
           <FlexboxGrid justify="center">
             <FlexboxGrid.Item colspan={12}>
               <Panel header={<h3>Login</h3>} bordered>
-                <Form fluid>
+                <Form
+                  fluid
+                  ref={formRef}
+                  onChange={setLoginForm}
+                  onCheck={setFormError}
+                  formValue={loginForm}
+                  model={model}
+                >
                   <Form.Group>
                     <Form.ControlLabel>
                       Entre com o usuário ou com o Email

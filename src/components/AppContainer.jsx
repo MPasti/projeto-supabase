@@ -177,6 +177,22 @@ const AppContainer = () => {
                 >
                   Laudo médico
                 </Nav.Item>
+                <Nav.Item
+                  onClick={() => navigate("/cadastro-teste")}
+                  eventKey="8"
+                  icon={
+                    <FaLaptopMedical
+                      style={{
+                        marginLeft: "-37px",
+                        marginRight: "18px",
+                        fontSize: "18px",
+                      }}
+                    />
+                  }
+                  placement="rightStart"
+                >
+                  Teste
+                </Nav.Item>
               </Nav>
             </Sidenav.Body>
           </Sidenav>

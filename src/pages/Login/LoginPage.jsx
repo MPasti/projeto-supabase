@@ -1,8 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
-import "../Login/App.css";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { useNavigate } from "react-router-dom";
+import "../Login/App.css";
 import { supabase } from "../../supabase/Client";
 import { useContext, useEffect } from "react";
 import { AppContext } from "../../context/AppContext";
@@ -28,7 +28,7 @@ function AppLogin() {
   supabase.auth.onAuthStateChange(async (event) => {
     if (event === "SIGNED_IN") {
       // vai para o sucesso
-      navigate("/success");
+      // navigate("/success");
     }
   });
 
