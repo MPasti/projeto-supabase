@@ -1,12 +1,14 @@
 import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../Login/App.css";
 import { supabase } from "../../supabase/Client";
+import { AppContext } from "../../context/AppContext";
 
 function AppSuccess() {
-  const [user, setUser] = useState({});
   const navigate = useNavigate();
+
+  const { user, setUser } = useContext(AppContext);
 
   useEffect(() => {
     async function getUserData() {

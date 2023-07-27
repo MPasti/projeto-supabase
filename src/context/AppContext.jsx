@@ -5,6 +5,7 @@ export const AppContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const AppProvider = ({ children }) => {
+  const [user, setUser] = useState({});
   const [usuarios, setUsuarios] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [placement, setPlacement] = useState("topEnd");
@@ -106,6 +107,8 @@ export const AppProvider = ({ children }) => {
     deleteUsuarios,
     local,
     placement,
+    user,
+    setUser,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

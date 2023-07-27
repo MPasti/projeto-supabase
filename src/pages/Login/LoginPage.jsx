@@ -4,9 +4,26 @@ import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { useNavigate } from "react-router-dom";
 import "../Login/App.css";
 import { supabase } from "../../supabase/Client";
+import { useContext, useEffect } from "react";
+import { AppContext } from "../../context/AppContext";
 
 function AppLogin() {
   const navigate = useNavigate();
+
+  const { user, setUser } = useContext(AppContext);
+
+  useEffect(() => {
+    async function getUserData() {
+      await supabase.auth.getUser().then((value) => {
+        if (value.data?.user) {
+          setUser(value.data.user);
+          console.log(value.data.user);
+        }
+      });
+    }
+
+    getUserData();
+  }, []);
 
   supabase.auth.onAuthStateChange(async (event) => {
     if (event === "SIGNED_IN") {
@@ -58,6 +75,7 @@ function AppLogin() {
             },
           }}
           appearance={{
+            theme: ThemeSupa,
             style: {
               button: { background: "black", color: "white" },
               anchor: { color: "blue" },

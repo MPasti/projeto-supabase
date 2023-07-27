@@ -8,6 +8,7 @@ import Home from "./routes/Home.jsx";
 import Login from "./routes/Login.jsx";
 import CadastroPacientes from "./routes/CadastroPacientes.jsx";
 import Success from "./routes/Success.jsx";
+import Calendario from "./routes/Calendario.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/cadastro-pacientes", element: <CadastroPacientes /> },
       { path: "/success", element: <Success /> },
+      { path: "/calendario", element: <Calendario /> },
     ],
   },
 ]);

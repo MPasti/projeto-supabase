@@ -7,7 +7,7 @@ import DashboardIcon from "@rsuite/icons/Dashboard";
 import GroupIcon from "@rsuite/icons/legacy/Group";
 import ExitIcon from "@rsuite/icons/Exit";
 import { Outlet, useNavigate } from "react-router-dom";
-import { FaCalendarAlt, FaHospital } from "react-icons/fa";
+import { FaCalendarAlt, FaHospital, FaLaptopMedical } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import "./styles.css";
 
@@ -146,7 +146,7 @@ const AppContainer = () => {
                   <Nav.Item eventKey="5-3">Channels</Nav.Item>
                 </Nav.Menu>
                 <Nav.Item
-                  onClick={() => navigate("/login")}
+                  onClick={() => navigate("/calendario")}
                   eventKey="6"
                   icon={
                     <FaCalendarAlt
@@ -160,6 +160,22 @@ const AppContainer = () => {
                   placement="rightStart"
                 >
                   Agenda
+                </Nav.Item>
+                <Nav.Item
+                  onClick={() => navigate("/login")}
+                  eventKey="7"
+                  icon={
+                    <FaLaptopMedical
+                      style={{
+                        marginLeft: "-37px",
+                        marginRight: "18px",
+                        fontSize: "18px",
+                      }}
+                    />
+                  }
+                  placement="rightStart"
+                >
+                  Laudo médico
                 </Nav.Item>
               </Nav>
             </Sidenav.Body>
