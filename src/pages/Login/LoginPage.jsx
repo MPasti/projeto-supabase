@@ -1,8 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
+import "../Login/App.css";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { useNavigate } from "react-router-dom";
-import "../Login/App.css";
 import { supabase } from "../../supabase/Client";
 
 function AppLogin() {
@@ -58,6 +58,7 @@ function AppLogin() {
             },
           }}
           appearance={{
+            theme: ThemeSupa,
             style: {
               button: { background: "black", color: "white" },
               anchor: { color: "blue" },
