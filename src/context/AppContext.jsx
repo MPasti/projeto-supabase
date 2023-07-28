@@ -19,7 +19,6 @@ export const AppProvider = ({ children }) => {
   const [formPacientes, setFormPacientes] = useState({
     name: "",
     email: "",
-    age: 0,
     cpf: "",
     endereco: "",
     bairro: "",

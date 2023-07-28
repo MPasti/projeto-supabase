@@ -42,9 +42,6 @@ const model = Schema.Model({
   email: StringType()
     .isEmail("Por favor, entre um Email válido")
     .isRequired("Este campo é obrigatório"),
-  age: NumberType("Por favor, entre um número válido")
-    .range(18, 30, "Entre uma idade entre 18 e 30")
-    .isRequired("Por favor entre sua idade"),
   cpf: StringType().isRequired("O CPF é obrigatório"),
   cep: StringType().isRequired("O CEP é obrigatório"),
   endereco: StringType().isRequired("O endereço é obrigatório"),
@@ -87,7 +84,6 @@ const AppFormPacientes = () => {
     setFormPacientes({
       name: "",
       email: "",
-      age: "",
       cpf: "",
       endereco: "",
       bairro: "",
