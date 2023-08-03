@@ -56,7 +56,7 @@ const TextField = forwardRef((props, ref) => {
 });
 
 const AppForm = () => {
-  const { formValue, setFormValue } = useContext(AppContext);
+  const { formValue, setFormValue, insertUsuarios } = useContext(AppContext);
   const formRef = useRef();
   // eslint-disable-next-line no-unused-vars
   const [formError, setFormError] = useState({});
@@ -66,6 +66,7 @@ const AppForm = () => {
       console.error("Form Error");
       return;
     }
+    insertUsuarios();
     console.log(formValue, "Form Value");
   };
 

@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { supabase } from "../supabase/Client";
+import ptBR from "rsuite/locales/pt_BR";
 
 export const AppContext = createContext();
 
@@ -42,7 +43,22 @@ export const AppProvider = ({ children }) => {
     hours: "Horas",
     minutes: "Minutos",
     seconds: "Segundos",
+    formattedMonthPattern: "MMM, yyyy",
+    formattedDayPattern: "dd MMM, yyyy",
+    dateLocale: ptBR,
   };
+
+  async function insertUsuarios() {
+    console.log("caiu");
+    const { error } = await supabase.auth.signUp({
+      email: formValue.email,
+      senha: formValue.password,
+    });
+    if (error) {
+      console.log(error.message);
+    }
+    setRefresh(true);
+  }
 
   async function getUsuarios() {
     const { data } = await supabase.from("cadastro_usuarios").select();
@@ -108,6 +124,7 @@ export const AppProvider = ({ children }) => {
     placement,
     user,
     setUser,
+    insertUsuarios,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

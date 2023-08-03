@@ -31,26 +31,14 @@ function AppConection() {
   }
 
   async function insertUsuarios() {
-    async function signInWithEmail() {
-      let { data, error } = await supabase.auth.signUp({
-        email: formValue.email,
-        senha: formValue.password,
-      });
-      if (error) {
-        console.log(error.message);
-      }
-      setRefresh(true);
-    }
-    console.log(formValue);
-    const { error } = await supabase.from("usuarios_cadastrados").insert({
-      usuario: formValue.name,
+    console.log("caiu");
+    const { error } = await supabase.auth.signUp({
       email: formValue.email,
       senha: formValue.password,
     });
     if (error) {
       console.log(error.message);
     }
-    signInWithEmail();
     setRefresh(true);
   }
 
